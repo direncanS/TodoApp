@@ -19,7 +19,6 @@
 import Todo from "@/components/Todo.vue";
 import TodoInput from "@/components/TodoInput.vue";
 import { createTodo, doneTodo, readTodos, undoneTodo, updateTodoCreationDate  } from "@/api";
-import { watch, computed } from 'vue';
 
 export default {
   name: "TodoList",
@@ -120,12 +119,10 @@ export default {
   },
   created() {
     this.getAll();
-    // this.checkAndUpdateTodos(); 
   },
   watch: {
     sorted: {
       handler() {
-        // Trigger re-computation when sorted state changes
       },
       immediate: true
     }

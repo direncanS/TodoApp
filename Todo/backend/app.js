@@ -12,11 +12,10 @@ var usersRouter = require('./routes/users');
 const db = require('./db/db');
 
 var app = express();
-// app.use(cors());
 app.use(cors({
-  origin: "http://127.0.0.1:5173",
+  origin: "http://localhost:5173",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ['Content-Type', 'Authorization'] // Ensure Authorization is allowed
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(bodyParser.json());  
 

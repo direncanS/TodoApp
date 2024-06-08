@@ -23,6 +23,23 @@ import { ref } from 'vue';
 const isSorted = ref(false);
 </script>
 
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'App',
+
+  mounted() {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+      this.$router.push({ name: 'Login' });
+    }
+  }
+};
+</script>
+
 <style scoped>
 
     .header-with-toggle{

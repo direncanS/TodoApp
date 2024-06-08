@@ -6,11 +6,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest --config=jest.config.js"
   },
   "dependencies": {
     "axios": "^1.2.0",
     "bulma": "^1.0.0",
+    "dotenv": "^16.4.5",
     "vue": "^3.2.45",
     "vue-router": "^4.3.2"
   },
@@ -24,10 +25,10 @@
     "vite": "^3.2.4",
     "vue-jest": "^5.0.0-alpha.10"
   },
-  "jest":{
-    "transform":{
-      "^.+\\.vue$": "vue-jest", 
-      "^.+\\.js$": "babel-jest" 
+  "jest": {
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      "^.+\\.js$": "babel-jest"
     }
   }
 }

@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5173:80"
+    environment:
+      - VITE_BACKEND="${VITE_BACKEND}"
     depends_on:
       - backend
 
@@ -17,14 +19,13 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - NODE_ENV=development
       - DB_DIALECT=mariadb
-      - DB_USER=testuser
-      - DB_PW=testpassword
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_NAME=testdb
-      - JWT_SECRET=jwt_secret_confidential
+      - DB_USER=${DB_USER}
+      - DB_PW=${DB_PW}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       db:
         condition: service_healthy
@@ -32,12 +33,12 @@ services:
   db:
     image: mariadb:10.5
     environment:
-      MYSQL_ROOT_PASSWORD: testpassword
-      MYSQL_DATABASE: testdb
-      MYSQL_USER: testuser
-      MYSQL_PASSWORD: testpassword
+      MYSQL_USER: ${DB_USER}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_PASSWORD: ${DB_PW}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PW}
     ports:
-      - "3306:3306"
+      - "33060:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./config/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -49,3 +50,4 @@ services:
 
 volumes:
   mariadb_data:
+

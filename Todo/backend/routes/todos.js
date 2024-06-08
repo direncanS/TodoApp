@@ -6,13 +6,6 @@ const db = require('../db/db');
 var express = require('express')
 var router = express.Router();
 
-// /* Read all todos */
-// router.get('/',authenticate ,async (req, res, next) => {
-//     const todos = await db.models.todo.findAll();
-
-//     res.status(200).json(todos);
-// });
-
 /* Read all todos for the logged-in user */
 router.get('/', authenticate, async (req, res, next) => {
     // Check if the user ID is available
@@ -38,8 +31,6 @@ router.get('/', authenticate, async (req, res, next) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
-
 /* Create todos */
 
 
