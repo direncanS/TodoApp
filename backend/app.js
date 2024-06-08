@@ -12,11 +12,7 @@ var usersRouter = require('./routes/users');
 const db = require('./db/db');
 
 var app = express();
-app.use(cors({
-  origin: "http://localhost:5173",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 app.use(bodyParser.json());  
 
 // view engine setup
