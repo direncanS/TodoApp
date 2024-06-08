@@ -7,8 +7,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5173:80"
-    environment:
-      - VITE_BACKEND="${VITE_BACKEND}"
     depends_on:
       - backend
 
